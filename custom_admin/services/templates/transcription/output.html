@@ -1,0 +1,20 @@
+<div class="panel-heading">
+    <button type="button" class="btn btn-sm btn-xs spoiler-trigger" style="background-color:lightyellow"
+            data-toggle="collapse">
+        Out: {phrase} <br>
+        <small style="float: left">{time}</small>
+    </button>
+</div>
+<div class="panel-collapse collapse out">
+    <div class="panel-body">
+        <pre class="json">{body}</pre>
+        <div></div>
+
+        <div id="tts_file">
+            <audio controls>
+                <source src="{tts_filename}" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</div>

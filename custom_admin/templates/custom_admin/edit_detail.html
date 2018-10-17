@@ -1,0 +1,56 @@
+{% extends 'custom_admin/base.html' %}
+
+{% load app_tags %}
+
+{% block headers %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'custom_admin/css/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Content -->
+    <div id="content" class="colM">
+
+        <h2>Изменить запись:</h2>
+        <h4>(пустые поля игнорируются)</h4>
+        <div id="content-main">
+
+            <form enctype="multipart/form-data" action="{{ item_endpoint }}edit" method="post" id="user_form"
+                  novalidate="">
+                {% csrf_token %}
+
+                <div>
+
+                    <fieldset class="module aligned ">
+                        <!-- Input goes here -->
+
+                        {% for col_name in col_names %}
+
+                            <div class="form-row field-name">
+
+                                <div>
+                                    <label class="required" for="id_{{ col_name }}">{{ col_name }}:</label>
+
+                                    <input type="text" name="{{ col_name }}"  class="vTextField"
+                                           placeholder="{{ detail|get_value:col_name }}" value=""
+                                           required id="id_{{ col_name }}">
+                                </div>
+
+                            </div>
+                        {% endfor %}
+
+                    </fieldset>
+
+                    <div class="submit-row">
+                        <input id="save_btn" type="submit" value="Сохранить" class="default" name="_save"
+                               onclick="post_confirm('#save_btn');"/>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!-- END Content -->
+
+{% endblock %}

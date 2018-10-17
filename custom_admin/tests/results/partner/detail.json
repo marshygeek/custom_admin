@@ -1,0 +1,33 @@
+{
+  "item_endpoint": "/admin/partners/1/",
+  "col_names": [
+    "id",
+    "login",
+    "password",
+    "name",
+    "organization",
+    "address",
+    "contact_phones",
+    "description",
+    "emails",
+    "uuid",
+    "ctime",
+    "utime"
+  ],
+  "detail": {
+    "login": "login_uralsk",
+    "password": "password_uralsk",
+    "name": "uralsk",
+    "organization": "organization_uralsk",
+    "address": "address_uralsk",
+    "contact_phones": "contact_phones_uralsk",
+    "description": "description_uralsk",
+    "emails": "emails_uralsk",
+    "id": 1,
+    "uuid": "f46f7569-94ca-4c27-89aa-7425d713030c",
+    "ctime": "2018-07-12 09:34:19.000",
+    "utime": "2018-07-12 09:34:19.000"
+  },
+  "can_edit": true,
+  "transit_btn": "<a href=\"/admin/integrations/?transit=1&partner_id=1\" style=\"display:inline;\" class=\"btn btn-sm\">Интеграции</a>"
+}

@@ -1,0 +1,11 @@
+{
+  "city_id": "2070001",
+  "sip": "demo_kuznetck",
+  "phone_number": "0",
+  "partner_id": 1,
+  "redirect_to_operator_sip": "demo_uralsk_redirect",
+  "id": 1,
+  "uuid": "c2fd5808-c488-42a5-ae21-30bbfc65a50e",
+  "ctime": 1531377259,
+  "utime": 1533025321
+}

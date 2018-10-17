@@ -1,0 +1,6 @@
+.idea
+.code
+__pycache__/
+config/conf.override.ini
+static/*
+db.sqlite3

@@ -1,0 +1,105 @@
+{
+  "urls": {
+    "id": "/admin/integrations/{}/"
+  },
+  "col_names": [
+    "id",
+    "city_id",
+    "sip",
+    "phone_number",
+    "partner_id",
+    "redirect_to_operator_sip"
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "city_id": "2070001",
+      "sip": "demo_uralsk",
+      "phone_number": "0",
+      "partner_id": "1",
+      "redirect_to_operator_sip": "demo_uralsk_redirect"
+    },
+    {
+      "id": 2,
+      "city_id": "1630004",
+      "sip": "demo_novokuibishevsk",
+      "phone_number": "0",
+      "partner_id": "2",
+      "redirect_to_operator_sip": "demo_novokuibishevsk_redirect"
+    },
+    {
+      "id": 3,
+      "city_id": "2070001",
+      "sip": "uralsk_taxi_city@ats.voxiai.com",
+      "phone_number": "0",
+      "partner_id": "3",
+      "redirect_to_operator_sip": "uralsk_taxi_city_redirect@ats.voxiai.com"
+    },
+    {
+      "id": 4,
+      "city_id": "1630004",
+      "sip": "novokuibishevsk_bravo@ats.voxiai.com",
+      "phone_number": "0",
+      "partner_id": "4",
+      "redirect_to_operator_sip": "novokuibishevsk_bravo_redirect@ats.voxiai.com"
+    },
+    {
+      "id": 5,
+      "city_id": "1580002",
+      "sip": "demo_kuznetsk",
+      "phone_number": "0",
+      "partner_id": "5",
+      "redirect_to_operator_sip": "demo_kuznetsk_redirect"
+    },
+    {
+      "id": 1,
+      "city_id": "2070001",
+      "sip": "demo_uralsk",
+      "phone_number": "0",
+      "partner_id": "1",
+      "redirect_to_operator_sip": "demo_uralsk_redirect"
+    },
+    {
+      "id": 1,
+      "city_id": "2070001",
+      "sip": "demo_uralsk",
+      "phone_number": "0",
+      "partner_id": "1",
+      "redirect_to_operator_sip": "demo_uralsk_redirect"
+    },
+    {
+      "id": 1,
+      "city_id": "2070001",
+      "sip": "demo_uralsk",
+      "phone_number": "0",
+      "partner_id": "1",
+      "redirect_to_operator_sip": "demo_uralsk_redirect"
+    },
+    {
+      "id": 1,
+      "city_id": "2070001",
+      "sip": "demo_uralsk",
+      "phone_number": "0",
+      "partner_id": "1",
+      "redirect_to_operator_sip": "demo_uralsk_redirect"
+    },
+    {
+      "id": 1,
+      "city_id": "2070001",
+      "sip": "demo_uralsk",
+      "phone_number": "0",
+      "partner_id": "1",
+      "redirect_to_operator_sip": "demo_uralsk_redirect"
+    }
+  ],
+  "paginator": {
+    "has_previous": false,
+    "previous_page_number": 0,
+    "number": 1,
+    "has_next": true,
+    "next_page_number": 2,
+    "num_pages": 2
+  },
+  "can_edit": true,
+  "transit_btn": "<a href=\"/admin/calls/?transit=1&integration_id={}\" style=\"display:inline;\" class=\"btn btn-sm\">Звонки</a>"
+}

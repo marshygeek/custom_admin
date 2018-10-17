@@ -1,0 +1,151 @@
+{% extends 'custom_admin/base_no_sidebar.html' %}
+{% load staticfiles %}
+
+
+{% block body %}
+    <body class=" dashboard" data-admin-utc-offset="0" data-gr-c-s-loaded="true">
+        <!-- Container -->
+        <div id="container">
+            <div id="wrapper">
+
+                <!-- Sidebar -->
+                <div id="sidebar-wrapper">
+                    <ul class="sidebar-nav">
+                        <li>
+                            <a style="font-size: 20px" href="{% url 'custom_admin:partners' %}">Партнеры</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 20px" href="{% url 'custom_admin:integrations' %}">Интеграции</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 20px" href="{% url 'custom_admin:calls' %}">Звонки</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 20px" href="{% url 'custom_admin:webhooks' %}">Вебхуки</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 20px" href="{% url 'custom_admin:orders' %}">Заказы</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 20px" href="{% url 'custom_admin:test_geo_syntax' %}">Тест syntax+geo</a>
+                        </li>
+                        <li>
+                            <a style="font-size: 20px" href="{% url 'custom_admin:tts_generation' %}">TTS</a>
+                        </li>
+
+                        <li>
+                            <a style="font-size: 20px" href="/admin" onclick="event.target.port=8084">Geo Admin</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /#sidebar-wrapper -->
+
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                    <!-- Modal -->
+                    <div class="modal fade" id="dataConfirmModal" tabindex="-1" role="dialog"
+                         aria-labelledby="dataConfirmLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="customerApplicationFormTitle">Вы уверены?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body"></div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+
+                                    <a class="btn btn-primary" id="dataConfirmOK">OK</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% block content %}
+                    {% endblock %}
+
+                    <div class="fixed-bottom">
+                        <a class="btn btn-secondary" id="menu-toggle" style="color: whitesmoke;">Меню</a>
+
+                        <a class="btn btn-secondary" href="{% url 'custom_admin:logout' %}"
+                           style="color: whitesmoke;">Выйти</a>
+                    </div>
+                </div>
+                <!-- /#page-content-wrapper -->
+
+            </div>
+            <!-- /#wrapper -->
+
+            <!-- Bootstrap core JavaScript -->
+            <script src="{% static 'custom_admin/vendor/jquery/jquery.min.js' %}"></script>
+            <script src="{% static 'custom_admin/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+            <script>
+                $("#wrapper").toggleClass("toggled");
+
+                $("#menu-toggle").click(function (e) {
+                    e.preventDefault();
+                    $("#wrapper").toggleClass("toggled");
+                });
+
+                $(document).ready(function () {
+                    $('a[data-confirm]').click(function (ev) {
+                        var href = $(this).attr('href');
+
+                        $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+                        $('#dataConfirmOK').attr('href', href);
+                        $('#dataConfirmModal').modal({show: true});
+                        return false;
+                    });
+                });
+
+                function post_confirm(elem_id) {
+                    if (confirm('Вы уверены?')) {
+                        $(elem_id).submit();
+                    } else {
+                        return false;
+                    }
+                }
+
+                function setParam(name, value) {
+                    var l = window.location;
+
+                    /* build params */
+                    var params = {};
+                    var x = /(?:\??)([^=&?]+)=?([^&?]*)/g;
+                    var s = l.search;
+                    for (var r = x.exec(s); r; r = x.exec(s)) {
+                        r[1] = decodeURIComponent(r[1]);
+                        if (!r[2]) r[2] = '%%';
+                        params[r[1]] = r[2];
+                    }
+
+                    /* set param */
+                    params[name] = encodeURIComponent(value);
+
+                    /* build search */
+                    var search = [];
+                    for (var i in params) {
+                        var p = encodeURIComponent(i);
+                        var v = params[i];
+                        if (v != '%%') p += '=' + v;
+                        search.push(p);
+                    }
+                    search = search.join('&');
+
+                    /* execute search */
+                    l.search = search;
+                }
+
+                $(".spoiler-trigger").click(function () {
+                    $(this).parent().next().collapse('toggle');
+                });
+            </script>
+
+            {% block scripts %}
+            {% endblock %}
+        </div>
+        <!-- END Container -->
+    </body>
+{% endblock %}

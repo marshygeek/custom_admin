@@ -1,0 +1,87 @@
+{
+  "urls": {
+    "id": "/admin/calls/{}/"
+  },
+  "col_names": [
+    "id",
+    "partner_call_id",
+    "partner_id",
+    "integration_id",
+    "customer_id",
+    "status",
+    "record",
+    "ctime",
+    "utime"
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "partner_call_id": null,
+      "partner_id": 1,
+      "integration_id": 1,
+      "customer_id": 1,
+      "status": 500,
+      "record": "record",
+      "ctime": "2018-07-24 12:04:32.000",
+      "utime": "2018-07-24 12:05:02.000"
+    },
+    {
+      "id": 2,
+      "partner_call_id": null,
+      "partner_id": 1,
+      "integration_id": 1,
+      "customer_id": 1,
+      "status": 500,
+      "record": "record",
+      "ctime": "2018-07-24 12:07:57.000",
+      "utime": "2018-07-24 12:08:32.000"
+    },
+    {
+      "id": 3,
+      "partner_call_id": null,
+      "partner_id": 2,
+      "integration_id": 2,
+      "customer_id": 2,
+      "status": 500,
+      "record": "record",
+      "ctime": "2018-07-24 12:09:02.000",
+      "utime": "2018-07-24 12:09:35.000"
+    },
+    {
+      "id": 4,
+      "partner_call_id": null,
+      "partner_id": 2,
+      "integration_id": 2,
+      "customer_id": 2,
+      "status": 500,
+      "record": "record",
+      "ctime": "2018-07-24 12:10:07.000",
+      "utime": "2018-07-24 12:10:35.000"
+    },
+    {
+      "id": 5,
+      "partner_call_id": null,
+      "partner_id": 1,
+      "integration_id": 1,
+      "customer_id": 1,
+      "status": 500,
+      "record": "record",
+      "ctime": "2018-07-24 12:11:26.000",
+      "utime": "2018-07-24 12:12:10.000"
+    }
+  ],
+  "paginator": {
+    "has_previous": false,
+    "previous_page_number": 0,
+    "number": 1,
+    "has_next": true,
+    "next_page_number": 2,
+    "num_pages": 2
+  },
+  "can_edit": false,
+  "additional_col": {
+    "name": "Запись звонка",
+    "required_field": "record",
+    "template": "\n            <audio controls>\n              <source src=\"/static/tmp/dialog/call_records/{}\" type=\"audio/wav\">\n              Your browser does not support the audio element.\n            </audio>\n        "
+  }
+}

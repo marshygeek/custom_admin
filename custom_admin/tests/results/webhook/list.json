@@ -1,0 +1,61 @@
+{
+  "urls": {
+    "id": "/admin/webhooks/{}/"
+  },
+  "col_names": [
+    "id",
+    "url",
+    "type",
+    "integration_id",
+    "method",
+    "ctime",
+    "utime"
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "url": "",
+      "type": 1,
+      "integration_id": 1,
+      "method": "POST",
+      "ctime": "2018-07-12 09:34:19.000",
+      "utime": "2018-07-12 09:34:19.000"
+    },
+    {
+      "id": 2,
+      "url": "",
+      "type": 2,
+      "integration_id": 1,
+      "method": "POST",
+      "ctime": "2018-07-12 09:34:19.000",
+      "utime": "2018-07-12 09:34:19.000"
+    },
+    {
+      "id": 3,
+      "url": "",
+      "type": 3,
+      "integration_id": 1,
+      "method": "POST",
+      "ctime": "2018-07-12 09:34:19.000",
+      "utime": "2018-07-12 09:34:19.000"
+    },
+    {
+      "id": 4,
+      "url": "",
+      "type": 1,
+      "integration_id": 2,
+      "method": "POST",
+      "ctime": "2018-07-12 09:34:19.000",
+      "utime": "2018-07-12 09:34:19.000"
+    }
+  ],
+  "paginator": {
+    "has_previous": false,
+    "previous_page_number": 0,
+    "number": 1,
+    "has_next": true,
+    "next_page_number": 2,
+    "num_pages": 2
+  },
+  "can_edit": true
+}

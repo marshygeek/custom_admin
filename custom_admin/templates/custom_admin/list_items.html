@@ -1,0 +1,189 @@
+{% extends 'custom_admin/base.html' %}
+
+{% load app_tags %}
+
+{% block headers %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'custom_admin/css/changelists.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+{% endblock %}
+
+{% block content %}
+    <div id="content" class="flex">
+        <div id="content-main">
+            <br>
+
+            {#            <div class="panel panel-default">#}
+            {#                <div class="panel-heading">#}
+            {#                    <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">#}
+            {#                        Фильтрация#}
+            {#                    </button>#}
+            {#                </div>#}
+            {#                <div class="panel-collapse collapse out">#}
+            {#                    <div class="panel-body">#}
+            {#                        <form method="get">#}
+            {#                            <div class="well">#}
+            {#                                <div class="row">#}
+            {##}
+            {#                                    {% for col_name in col_names %}#}
+            {#                                        <div class="form-group col-sm-4 col-md-3">#}
+            {#                                            {{ col_name }}:#}
+            {#                                            <input type="text" name="{{ col_name }}" class="form-control"#}
+            {#                                                   id="id_{{ col_name }}">#}
+            {#                                        </div>#}
+            {#                                    {% endfor %}#}
+            {##}
+            {#                                </div>#}
+            {#                                <button type="submit" class="btn btn-primary">#}
+            {#                                    <span class="glyphicon glyphicon-search"></span> Поиск#}
+            {#                                </button>#}
+            {#                            </div>#}
+            {#                        </form>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <br>#}
+
+            {% if prev_links %}
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        {% if prev_links.partners %}
+                            <li class="breadcrumb-item"><a href="{{ prev_links.partners }}">Партнеры</a></li>
+                        {% endif %}
+
+                        {% if prev_links.integrations %}
+                            <li class="breadcrumb-item"><a href="{{ prev_links.integrations }}">Интеграции</a></li>
+                        {% endif %}
+
+                        {% if prev_links.calls %}
+                            <li class="breadcrumb-item"><a href="{{ prev_links.calls }}">Звонки</a></li>
+                        {% endif %}
+                    </ol>
+                </nav>
+            {% endif %}
+
+            <ul class="object-tools" style="position: relative; left: 180px;">
+                <li>
+                    <a href="#" class="addlink">
+                        Добавить запись
+                    </a>
+                </li>
+            </ul>
+
+            <div class="module" id="changelist">
+                <div class="results">
+                    <table id="result_list">
+
+                        <thead>
+
+                        <tr>
+                            <!-- Input goes here -->
+
+                            {% for col_name in col_names %}
+                                <th scope="col" class="column-__str__">
+                                    <div class="text entire-thing">
+
+                                        {% if col_name|need_to_shorten %}
+                                            <span style="display: inline-block; font-size: 8px;">{{ col_name|shorten_col|linebreaksbr }}</span>
+                                        {% else %}
+                                            <span style="display: inline-block;">{{ col_name }}</span>
+                                        {% endif %}
+
+                                        <div style="display: inline-block;">
+                                            <a class="fas fa-sort-amount-up"
+                                               href="javascript:setParam('ordering', '{{ col_name }}');"></a>
+
+                                            <a class="fas fa-sort-amount-down"
+                                               href="javascript:setParam('ordering', '-{{ col_name }}');"></a>
+                                        </div>
+
+                                    </div>
+
+                                </th>
+                            {% endfor %}
+
+                            {% if additional_col %}
+                                <th scope="col" class="column-__str__">
+                                    <div class="text"><span>{{ additional_col.name }}</span></div>
+                                </th>
+                            {% endif %}
+
+                            <th scope="col" class="column-__str__">
+                                <div class="text"><span>Actions</span></div>
+                            </th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <!-- Input goes here -->
+
+                        {% for row in rows %}
+                            <tr class="row{{ forloop.counter }}">
+                                {% for col_name in col_names %}
+
+                                    {% if col_name in urls %}
+                                        {% with url=urls|get_value:col_name val=row|get_value:col_name %}
+                                            <th class="field-__str__"><a href="{{ url|format:val }}">{{ val }}</a></th>
+                                        {% endwith %}
+                                    {% else %}
+                                        <th class="field-__str__"><a>{{ row|get_value:col_name }}</a></th>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if additional_col %}
+                                    <th class="field-__str__">
+                                        {% with field=row|get_value:additional_col.required_field %}
+                                            {{ additional_col.template|format:field|safe }}
+                                        {% endwith %}
+                                    </th>
+                                {% endif %}
+
+                                <th class="field-__str__">
+                                    {% with url=urls|get_value:"id" id=row|get_value:"id" %}
+                                        {% if transit_btn %}
+                                            {{ transit_btn|format:id|safe }}
+                                        {% endif %}
+
+                                        {% if can_edit %}
+                                            <a href="{{ url|format:id }}edit" style="display:inline;"
+                                               class="btn btn-sm">Редактировать</a>
+                                        {% endif %}
+
+                                        <a href="{{ url|format:id }}delete?to-list=1" style="display:inline;"
+                                           class="btn btn-sm">Удалить</a>
+                                    {% endwith %}
+                                </th>
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if paginator.has_previous %}
+                            <a href="javascript:setParam('page', 1);">&laquo; Первая</a>
+                            <a href="javascript:setParam('page', {{ paginator.previous_page_number }});">Предыдущая</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Страница {{ paginator.number }} из {{ paginator.num_pages }}.
+                        </span>
+
+                        {% if paginator.has_next %}
+                            <a href="javascript:setParam('page', {{ paginator.next_page_number }});">Следующая</a>
+                            <a href="javascript:setParam('page', {{ paginator.num_pages }});">Последняя &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

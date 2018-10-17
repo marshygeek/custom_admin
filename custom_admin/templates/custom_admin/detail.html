@@ -1,0 +1,103 @@
+{% extends 'custom_admin/base.html' %}
+
+{% load app_tags %}
+{% load staticfiles %}
+
+{% block headers %}
+    <link rel="stylesheet" type="text/css" href="{% static 'custom_admin/css/forms.css' %}">
+
+    {% if preview_block %}
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'custom_admin/css/jquery.json-viewer.css' %}">
+        <style type="text/css">
+            .dashboard #content {
+                width: 75%;
+            }
+        </style>
+    {% endif %}
+{% endblock %}
+
+{% if preview_block %}
+    {% block scripts %}
+        <script src="{% static 'custom_admin/js/jquery.json-viewer.js' %}"></script>
+
+        <script>
+            $('.json').each(function () {
+                try {
+                    var json = JSON.parse($(this).text());
+                }
+                catch (e) {
+                    return;
+                }
+
+                $(this).parent().parent().attr('class', 'panel-collapse collapse show');
+                var jsonContainer = $(this).next();
+
+                jsonContainer.jsonPresenter('destroy')
+                    .jsonPresenter({
+                        json: json
+                    })
+                    .jsonPresenter('expandAll')
+                    .jsonPresenter('collapse', 1);
+
+                $(this).parent().parent().attr('class', 'panel-collapse collapse out');
+                $(this).remove();
+            });
+        </script>
+    {% endblock %}
+{% endif %}
+
+{% block content %}
+    <!-- Content -->
+    <div id="content" class="colM">
+
+        <div id="content-main">
+
+            {% if preview_block %}
+                <div id="preview">
+                    {{ preview_block|safe }}
+                </div>
+                <br>
+            {% endif %}
+
+            <div>
+
+                <fieldset class="module aligned ">
+                    <!-- Input goes here -->
+
+                    {% for col_name in col_names %}
+
+                        <div class="form-row field-name">
+
+                            <div>
+                                <label class="required">{{ col_name }}:</label>
+
+                                <input type="text" value="{{ detail|get_value:col_name }}" class="vTextField" readonly>
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+                </fieldset>
+
+
+                <div class="submit-row">
+                    {% if transit_btn %}
+                        {{ transit_btn|safe }}
+                    {% endif %}
+
+                    {% if can_edit %}
+                        <a href="{{ item_endpoint }}edit" class="btn btn-default">Редактировать</a>
+                    {% endif %}
+
+                    <a href="{{ item_endpoint }}delete" class="btn btn-default"
+                       data-confirm="">Удалить</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- END Content -->
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{
+  "item_endpoint": "/admin/integrations/2/",
+  "col_names": [
+    "id",
+    "city_id",
+    "sip",
+    "phone_number",
+    "partner_id",
+    "redirect_to_operator_sip",
+    "uuid",
+    "ctime",
+    "utime"
+  ],
+  "detail": {
+    "city_id": "1630004",
+    "sip": "demo_novokuibishevsk",
+    "phone_number": "0",
+    "partner_id": "2",
+    "redirect_to_operator_sip": "demo_novokuibishevsk_redirect",
+    "id": 2,
+    "uuid": "a3992de0-e154-4d5a-913d-f917a6f8b205",
+    "ctime": "2018-07-12 09:34:19.000",
+    "utime": "2018-07-12 09:34:19.000"
+  },
+  "can_edit": true,
+  "transit_btn": "<a href=\"/admin/calls/?transit=1&integration_id=2\" style=\"display:inline;\" class=\"btn btn-sm\">Звонки</a>"
+}

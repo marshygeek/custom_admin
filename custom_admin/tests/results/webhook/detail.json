@@ -1,0 +1,24 @@
+{
+  "item_endpoint": "/admin/webhooks/1/",
+  "col_names": [
+    "id",
+    "url",
+    "type",
+    "integration_id",
+    "method",
+    "uuid",
+    "ctime",
+    "utime"
+  ],
+  "detail": {
+    "id": 2,
+    "url": "",
+    "type": 2,
+    "integration_id": 1,
+    "method": "POST",
+    "uuid": "f46f7569-94ca-4c27-89aa-7425d713030c",
+    "ctime": "2018-07-12 09:34:19.000",
+    "utime": "2018-07-12 09:34:19.000"
+  },
+  "can_edit": true
+}

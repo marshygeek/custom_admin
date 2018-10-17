@@ -1,0 +1,64 @@
+{% extends 'custom_admin/base_no_sidebar.html' %}
+
+{% block headers %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'custom_admin/css/login.css' %}">
+{% endblock %}
+
+{% block body %}
+    <body class=" login" data-admin-utc-offset="0" data-gr-c-s-loaded="true">
+
+        <!-- Container -->
+        <div id="container">
+
+            <!-- Header -->
+            <div id="header">
+                <div id="branding">
+                    <h1 id="site-name"><a>Alena.Platform Admin</a></h1>
+                </div>
+            </div>
+            <!-- END Header -->
+
+
+            <!-- Content -->
+            <div id="content" class="colM">
+
+                <div id="content-main">
+
+                    <form action="{% url 'custom_admin:index' %}" method="post" id="login-form">
+                        {% csrf_token %}
+
+                        <div class="form-row">
+
+                            <label class="required" for="id_username">Имя пользователя:</label>
+                            <input type="text"
+                                   name="username"
+                                   autofocus
+                                   maxlength="254"
+                                   required
+                                   id="id_username">
+                        </div>
+                        <div class="form-row">
+
+                            <label class="required" for="id_password">Пароль:</label>
+                            <input type="password" name="password" required id="id_password">
+
+                        </div>
+
+
+                        <div class="submit-row">
+                            <label>&nbsp;</label><input type="submit" value="Войти">
+                        </div>
+                    </form>
+
+                </div>
+
+
+                <br class="clear">
+            </div>
+            <!-- END Content -->
+
+        </div>
+        <!-- END Container -->
+    </body>
+{% endblock %}

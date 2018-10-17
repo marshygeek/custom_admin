@@ -1,0 +1,30 @@
+<div class="panel-heading">
+    <button type="button" class="btn btn-sm btn-xs spoiler-trigger" data-toggle="collapse">
+        Заказ на карте
+    </button>
+</div>
+<div class="panel-collapse collapse out">
+    <div class="panel-body">
+        <br>
+        {comment}
+        <div id="map" style="width: 600px; height: 400px"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var map;
+
+    function set_route(p1_coords, p2_coords) {{
+        ymaps.route([p1_coords, p2_coords], {{mapStateAutoApply: true}}).done(function (route) {{
+            map.geoObjects.removeAll();
+
+            map.geoObjects.add(route);
+        }});
+    }}
+
+    function init() {{
+        {init_map_code}
+    }}
+
+    ymaps.ready(init);
+</script>

@@ -1,0 +1,24 @@
+{% extends 'custom_admin/base.html' %}
+
+{% load app_tags %}
+
+
+{% block content %}
+    <!-- Content -->
+    <div id="content" class="colM">
+
+        <div id="content-main">
+
+            <div>
+
+                <h2>Запись удалена</h2>
+                <br>
+                <a href="{{ list_endpoint }}" class="btn btn-default">Вернуться к списку</a>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- END Content -->
+
+{% endblock %}

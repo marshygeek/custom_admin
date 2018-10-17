@@ -1,0 +1,34 @@
+{% extends 'custom_admin/base_no_sidebar.html' %}
+
+{% block body %}
+    <body class="" data-admin-utc-offset="0" data-gr-c-s-loaded="true">
+
+        <!-- Container -->
+        <div id="container">
+
+
+            <!-- Header -->
+            <div id="header">
+                <div id="branding">
+                    <h1 id="site-name"><a>Alena.Platform Admin</a></h1>
+                </div>
+            </div>
+            <!-- END Header -->
+
+            <!-- Content -->
+            <div id="content" class="colM">
+
+                <h2>Произошла ошибка</h2>
+
+                <p style="color:red;">{{ msg }}</p>
+
+                <br class="clear">
+            </div>
+            <!-- END Content -->
+
+            <div id="footer"></div>
+        </div>
+        <!-- END Container -->
+
+    </body>
+{% endblock %}

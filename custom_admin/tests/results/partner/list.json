@@ -1,0 +1,65 @@
+{
+  "urls": {
+    "id": "/admin/partners/{}/"
+  },
+  "col_names": [
+    "id",
+    "login",
+    "password",
+    "name",
+    "organization",
+    "address"
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "login": "login_uralsk",
+      "password": "password_uralsk",
+      "name": "uralsk",
+      "organization": "organization_uralsk",
+      "address": "address_uralsk"
+    },
+    {
+      "id": 2,
+      "login": "login_novokub",
+      "password": "password_novokub",
+      "name": "novokub",
+      "organization": "organization_novokub",
+      "address": "address_novokub"
+    },
+    {
+      "id": 3,
+      "login": "login_uralsk",
+      "password": "password_uralsk",
+      "name": "uralsk",
+      "organization": "Такси CITY",
+      "address": "Казахстан, г.Уральск, ул.У.Громова, 27/1, 1 этаж"
+    },
+    {
+      "id": 4,
+      "login": "login_novokub",
+      "password": "password_novokub",
+      "name": "novokub",
+      "organization": "Браво",
+      "address": "Россия, Самарская обл., г.Новокуйбышевск, ул. Мичурина, 14а"
+    },
+    {
+      "id": 5,
+      "login": "login_kuznetsk",
+      "password": "password_kuznetsk",
+      "name": "kuznetsk",
+      "organization": "organization_kuznetsk",
+      "address": "address_kuznetsk"
+    }
+  ],
+  "paginator": {
+    "has_previous": false,
+    "previous_page_number": 0,
+    "number": 1,
+    "has_next": true,
+    "next_page_number": 2,
+    "num_pages": 2
+  },
+  "can_edit": true,
+  "transit_btn": "<a href=\"/admin/integrations/?transit=1&partner_id={}\" style=\"display:inline;\" class=\"btn btn-sm\">Интеграции</a>"
+}
