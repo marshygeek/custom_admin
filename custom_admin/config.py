@@ -16,14 +16,6 @@ logger.addHandler(handler)
 # it's about 2 years
 COOKIE_MAX_AGE = 3600 * 24 * 365 * 2
 
-CORE_API_CP1 = 'http://core/cp1/{}'
-CORE_API_V1 = 'http://core/v1/{}'
-CORE_DEMO_API = 'http://core/demo1/{}'
-
-SYNTAX_API = 'http://syntax:8088/syntax/v1/{}'
-GEO_API = 'http://geo:8084/v1/{}'
-DIALOG_API = 'http://dialog:8089/v1/{}'
-
 APP_DIR = os.path.dirname(__file__)
 MOCK_FILES_DIR = join(APP_DIR, 'mock_files')
 
